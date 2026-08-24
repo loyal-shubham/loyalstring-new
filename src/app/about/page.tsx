@@ -1,44 +1,150 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { Target, Rocket, Eye, Lightbulb, Quote, ChevronRight } from 'lucide-react';
+
 export const metadata = {
   title: "About Us | Loyal String International",
-  description: "Learn about Loyal String International Pvt. Ltd. and our global mission to revolutionize RFID technology.",
+  description: "India's No.1 EAS Brand and Manufacturer of EAS equipments, RFID solutions, and Software development.",
+};
+
+const aboutData = {
+  heroText: "India's No.1 EAS Brand. We are the first and largest manufacturer of EAS equipments in INDIA. We have expertise in Electronic Article Surveillance Systems, RFID solutions, and Software development. We like competition and competitors to extract the best out of us, coming up with the most exciting and interesting solutions in wireless technology which will be a game changer across the industry.",
+  coreValues: [
+    {
+      title: "Our Mission",
+      description: "To make RFID and EAS so much affordable so every retailer can use the RFID and EAS System.",
+      icon: <Target size={32} strokeWidth={1.5} />
+    },
+    {
+      title: "Vision 2026",
+      description: "To become the No.1 Electronic Article Surveillance company in the world with innovative technology.",
+      icon: <Eye size={32} strokeWidth={1.5} />
+    },
+    {
+      title: "Vision 2027",
+      description: "To pioneer AI-driven tracking ecosystems and achieve zero-loss inventory solutions for global enterprise partners.",
+      icon: <Rocket size={32} strokeWidth={1.5} />
+    },
+    {
+      title: "Innovation",
+      description: "To focus on new technology and new manufacturing techniques in EAS, UHF and 2.4 Ghz RFID.",
+      icon: <Lightbulb size={32} strokeWidth={1.5} />
+    }
+  ],
+  journey: [
+    {
+      year: "2011",
+      title: "Established",
+      description: "Started our journey with website design and software development for Bayberry Pharmaceuticals Private Limited, computerizing all their business processes successfully."
+    },
+    {
+      year: "2013",
+      title: "Best Jewellery Software",
+      description: "Became popular in the Jewellery Industry for our Jewellery and Money Lending Softwares. From Extreme Jewellsoft to GOLDMCX.com."
+    },
+    {
+      year: "2015",
+      title: "Import of RFID and EAS",
+      description: "Started import from China and USA of RFID and EAS devices. Began modifications in hardware and software to match exact customer requirements."
+    },
+    {
+      year: "2019",
+      title: "Best EAS in the world",
+      description: "Manufactured world's best EAS Machines. The only company in the world to have data technology with EAS, serving critical clients like the Indian Navy and International Airports."
+    },
+    {
+      year: "2020",
+      title: "E-Store Launched",
+      description: "Buy everything online with our transparent pricing across India. One single store to address all your EAS, RFID and Software needs."
+    },
+    {
+      year: "2022",
+      title: "India's First Detacher",
+      description: "Manufactured export quality EAS Magnetic detacher from 4000 GS to 14000 GS to unlock EAS security tags."
+    }
+  ],
+  founderMessage: {
+    quote: "\"Building String of Happy Customers !! The conviction begins with 'To develop No. 1 Product in the world or the unique one' capability of Innovation and Implementation is our strength. Our Ethics, principles and 'Customer is God' approach lead the organization to next level. Never give up attitude and acceptance of failures gives enormous confidence and strength in the team members which leads to create and achieve world class solutions. We are encouraging business owners to join our hands and we will take shared responsibility to grow and secure your business.\"",
+    author: "- Rahul Thakare, Founder and CEO"
+  }
 };
 
 export default function AboutPage() {
   return (
-    <div className="section container">
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-        <h1 className="heading-1" style={{ marginBottom: "2rem" }}>About Loyal String</h1>
+    <div className="section container" style={{ animation: "fadeIn var(--transition-normal)" }}>
+      <div style={{ width: "100%", margin: "0 auto", paddingBottom: "4rem" }}>
         
-        <div className="glass-card" style={{ padding: "3rem", marginBottom: "3rem" }}>
-          <h2 className="heading-3" style={{ marginBottom: "1rem" }}>Our Mission</h2>
-          <p className="text-lead" style={{ marginBottom: "0", color: "var(--text-primary)" }}>
-            At Loyal String International Pvt. Ltd., our mission is to empower businesses globally through innovative, reliable, and cutting-edge RFID hardware solutions.
+        {/* Banner Section */}
+        <div style={{ width: "100%", height: "400px", position: "relative", marginBottom: "4rem", borderRadius: "var(--border-radius-lg)", overflow: "hidden" }}>
+          <Image 
+            src="/about_banner.jpg" 
+            alt="Loyal String Technology Innovation" 
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
+
+        {/* Hero Section */}
+        <div style={{ textAlign: "center", marginBottom: "6rem", maxWidth: "900px", margin: "0 auto" }}>
+          <h1 className="heading-1" style={{ marginBottom: "2rem", letterSpacing: "-0.03em" }}>About Loyal String</h1>
+          <p style={{ color: "var(--text-secondary)", fontSize: "1.25rem", lineHeight: "1.8" }}>
+            {aboutData.heroText}
           </p>
         </div>
+        
+        {/* Core Values Section */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "4rem", marginBottom: "8rem" }}>
+          {aboutData.coreValues.map((item, index) => (
+            <div key={index} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+              <div style={{ marginBottom: "1.5rem", color: "var(--accent-primary)" }}>
+                {item.icon}
+              </div>
+              <h2 className="heading-3" style={{ marginBottom: "1rem" }}>{item.title}</h2>
+              <p style={{ margin: "0", color: "var(--text-secondary)", lineHeight: "1.8" }}>
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
 
-        <div style={{ display: "grid", gap: "2rem", marginBottom: "3rem" }}>
-          <div>
-            <h2 className="heading-2" style={{ marginBottom: "1rem" }}>Global Manufacturing</h2>
-            <p style={{ color: "var(--text-secondary)", lineHeight: "1.8", fontSize: "1.1rem" }}>
-              Based in India with a global footprint, we specialize in the manufacturing of high-quality RFID tags and handheld RFID guns. Our state-of-the-art production facilities ensure that every component meets rigorous international standards for precision and durability.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="heading-2" style={{ marginBottom: "1rem" }}>Why Choose Us?</h2>
-            <ul style={{ color: "var(--text-secondary)", lineHeight: "1.8", fontSize: "1.1rem", paddingLeft: "1.5rem", listStyleType: "disc" }}>
-              <li><strong>End-to-End Solutions:</strong> From customizable RFID labels to rugged industrial tags and powerful readers.</li>
-              <li><strong>Uncompromised Quality:</strong> Rigorous testing ensures maximum read range and accuracy in real-world environments.</li>
-              <li><strong>Global Distribution:</strong> We seamlessly supply enterprises, retail chains, and industrial sectors across the world.</li>
-              <li><strong>Continuous Innovation:</strong> Our R&D team is constantly pushing the boundaries of what RFID tech can achieve.</li>
-            </ul>
+        {/* Journey Section (Minimal Timeline) */}
+        <div style={{ marginBottom: "8rem", maxWidth: "800px", margin: "0 auto" }}>
+          <h2 className="heading-2" style={{ marginBottom: "4rem", textAlign: "center" }}>Our Journey</h2>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {aboutData.journey.map((item, index) => (
+              <div key={index} style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+                <div style={{ minWidth: "80px", textAlign: "right", paddingTop: "0.25rem" }}>
+                  <strong style={{ fontSize: "1.25rem", color: "var(--text-primary)", display: "block" }}>{item.year}</strong>
+                </div>
+                <div style={{ width: "2px", backgroundColor: "var(--border-color)", alignSelf: "stretch", position: "relative" }}>
+                  <div style={{ position: "absolute", top: "0.6rem", left: "-4px", width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "var(--accent-primary)" }}></div>
+                </div>
+                <div style={{ flex: 1, paddingBottom: index !== aboutData.journey.length - 1 ? "4rem" : "0" }}>
+                  <h3 style={{ fontSize: "1.25rem", fontWeight: "600", marginBottom: "0.5rem" }}>{item.title}</h3>
+                  <p style={{ color: "var(--text-secondary)", margin: "0", lineHeight: "1.7" }}>{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="glass-card text-center" style={{ padding: "3rem", background: "rgba(59, 130, 246, 0.05)", border: "1px solid rgba(59, 130, 246, 0.2)" }}>
-          <h2 className="heading-2" style={{ marginBottom: "1rem" }}>Partner with us today</h2>
-          <p className="text-lead" style={{ marginBottom: "2rem" }}>Let's build the future of tracking and security together.</p>
-          <a href="/contact" className="btn btn-primary">Contact Our Team</a>
+        {/* Founder Message Section */}
+        <div style={{ marginBottom: "8rem", maxWidth: "800px", margin: "0 auto", textAlign: "center", position: "relative" }}>
+          <Quote size={48} style={{ color: "var(--border-color)", margin: "0 auto 2rem auto", opacity: 0.5 }} />
+          <p style={{ fontSize: "1.25rem", fontStyle: "italic", color: "var(--text-secondary)", lineHeight: "1.9", marginBottom: "2.5rem" }}>
+            {aboutData.founderMessage.quote}
+          </p>
+          <p style={{ fontWeight: "600", color: "var(--text-primary)", fontSize: "1.1rem" }}>{aboutData.founderMessage.author}</p>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center" style={{ marginTop: "4rem", padding: "4rem 0", borderTop: "1px solid var(--border-color)" }}>
+          <h2 className="heading-2" style={{ marginBottom: "1.5rem" }}>Partner with us today</h2>
+          <p style={{ marginBottom: "2.5rem", color: "var(--text-secondary)", fontSize: "1.1rem" }}>Let's build the future of tracking and security together.</p>
+          <Link href="/contact" className="btn btn-primary" style={{ padding: "1rem 2rem", fontSize: "1.1rem" }}>
+            Contact Our Team <ChevronRight size={20} style={{ marginLeft: "0.5rem" }} />
+          </Link>
         </div>
       </div>
     </div>

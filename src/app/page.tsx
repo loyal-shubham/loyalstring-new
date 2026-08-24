@@ -250,62 +250,66 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             {/* Software Dev */}
-            <div className="group relative bg-white border border-slate-200 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgb(147,51,234,0.1)] hover:border-purple-200 transition-all duration-300 overflow-hidden hover:-translate-y-1">
-              <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] group-hover:opacity-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 pointer-events-none text-purple-600">
-                <MonitorSmartphone size={150} strokeWidth={1} />
+            <Link href="/services/software-development" className="flex flex-col sm:flex-row gap-6 group">
+              <div className="shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 border border-purple-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-purple-100/50">
+                  <MonitorSmartphone size={32} />
+                </div>
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-8 border border-purple-100 relative z-10 group-hover:scale-110 transition-transform duration-300">
-                <MonitorSmartphone size={32} />
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900 transition-colors duration-300 group-hover:text-purple-600">Software Development</h3>
+                <p className="text-slate-600 leading-relaxed text-[1.05rem]">
+                  Custom enterprise software, robust web applications, and seamless mobile experiences engineered for performance and scalability.
+                </p>
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4 relative z-10 text-slate-900">Software Development</h3>
-              <p className="text-slate-600 leading-relaxed text-[1.05rem] relative z-10">
-                Custom enterprise software, robust web applications, and seamless mobile experiences engineered for performance and scalability.
-              </p>
-            </div>
+            </Link>
 
             {/* Digital Marketing */}
-            <div className="group relative bg-white border border-slate-200 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgb(37,99,235,0.1)] hover:border-blue-200 transition-all duration-300 overflow-hidden hover:-translate-y-1">
-              <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] group-hover:opacity-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 pointer-events-none text-blue-600">
-                <TrendingUp size={150} strokeWidth={1} />
+            <Link href="/services/digital-marketing" className="flex flex-col sm:flex-row gap-6 group">
+              <div className="shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-blue-100/50">
+                  <TrendingUp size={32} />
+                </div>
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-8 border border-blue-100 relative z-10 group-hover:scale-110 transition-transform duration-300">
-                <TrendingUp size={32} />
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900 transition-colors duration-300 group-hover:text-blue-600">Digital Marketing</h3>
+                <p className="text-slate-600 leading-relaxed text-[1.05rem]">
+                  Data-driven marketing campaigns, social media management, and targeted advertising to connect with your ideal audience.
+                </p>
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4 relative z-10 text-slate-900">Digital Marketing</h3>
-              <p className="text-slate-600 leading-relaxed text-[1.05rem] relative z-10">
-                Data-driven marketing campaigns, social media management, and targeted advertising to connect with your ideal audience.
-              </p>
-            </div>
+            </Link>
 
             {/* SEO */}
-            <div className="group relative bg-white border border-slate-200 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgb(219,39,119,0.1)] hover:border-pink-200 transition-all duration-300 overflow-hidden hover:-translate-y-1">
-              <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] group-hover:opacity-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 pointer-events-none text-pink-600">
-                <BarChart size={150} strokeWidth={1} />
+            <Link href="/services/seo" className="flex flex-col sm:flex-row gap-6 group">
+              <div className="shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-600 border border-pink-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-pink-100/50">
+                  <BarChart size={32} />
+                </div>
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-600 mb-8 border border-pink-100 relative z-10 group-hover:scale-110 transition-transform duration-300">
-                <BarChart size={32} />
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900 transition-colors duration-300 group-hover:text-pink-600">Search Engine Optimization</h3>
+                <p className="text-slate-600 leading-relaxed text-[1.05rem]">
+                  Technical, on-page, and off-page SEO strategies to dominate search rankings and drive high-intent organic traffic to your business.
+                </p>
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4 relative z-10 text-slate-900">Search Engine Optimization</h3>
-              <p className="text-slate-600 leading-relaxed text-[1.05rem] relative z-10">
-                Technical, on-page, and off-page SEO strategies to dominate search rankings and drive high-intent organic traffic to your business.
-              </p>
-            </div>
+            </Link>
 
             {/* Consulting */}
-            <div className="group relative bg-white border border-slate-200 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgb(79,70,229,0.1)] hover:border-indigo-200 transition-all duration-300 overflow-hidden hover:-translate-y-1">
-              <div className="absolute -top-6 -right-6 p-8 opacity-[0.03] group-hover:opacity-10 transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 pointer-events-none text-indigo-600">
-                <Briefcase size={150} strokeWidth={1} />
+            <Link href="/services/business-consulting" className="flex flex-col sm:flex-row gap-6 group">
+              <div className="shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:bg-indigo-100/50">
+                  <Briefcase size={32} />
+                </div>
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-8 border border-indigo-100 relative z-10 group-hover:scale-110 transition-transform duration-300">
-                <Briefcase size={32} />
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900 transition-colors duration-300 group-hover:text-indigo-600">Business Consulting</h3>
+                <p className="text-slate-600 leading-relaxed text-[1.05rem]">
+                  Expert strategic guidance to streamline your operations, integrate new technologies, and formulate long-term growth roadmaps.
+                </p>
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4 relative z-10 text-slate-900">Business Consulting</h3>
-              <p className="text-slate-600 leading-relaxed text-[1.05rem] relative z-10">
-                Expert strategic guidance to streamline your operations, integrate new technologies, and formulate long-term growth roadmaps.
-              </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
