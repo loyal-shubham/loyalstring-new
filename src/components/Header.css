@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 0;
   border-top: none;
   border-left: none;
@@ -10,7 +10,7 @@
   transition: all 0.3s ease;
 }
 
-.header-home {
+.header-transparent {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,6 +19,12 @@
   border: none !important;
   box-shadow: none !important;
   backdrop-filter: none;
+}
+
+.header-scrolled {
+  position: sticky;
+  background: white !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
 .logo-inverted {
@@ -56,18 +62,18 @@
 .nav-link {
   font-weight: 500;
   transition: color var(--transition-fast);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--accent-primary);
 }
 
-.header-home .nav-link {
+.header-transparent .nav-link {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.header-home .nav-link:hover, .header-home .nav-link.active {
+.header-transparent .nav-link:hover, .header-transparent .nav-link.active {
   color: #ffffff;
 }
 

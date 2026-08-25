@@ -2,15 +2,29 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Menu, X, ShoppingCart, Phone, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "./Header.css";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isTransparent = isHome && !isScrolled;
+  const headerClass = isTransparent ? "header-transparent" : "header-scrolled";
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -48,15 +62,15 @@ export default function Header() {
   ];
 
   return (
-    <header className={`header ${isHome ? "header-home" : "glass-card"}`}>
+    <header className={`header ${headerClass}`}>
       <div className="header-container">
         <Link href="/" className="logo flex items-center no-underline">
           <img
-            src={isHome ? "/logos/logo_white.png" : "/logos/logo_black.png"}
+            src={isTransparent ? "/logos/logo_white.png" : "/logos/logo_black.png"}
             alt="Loyal String Logo"
             className="h-10 lg:h-[60px] w-auto"
           />
-          <span className="ml-2 lg:ml-3 font-extrabold text-[1.15rem] lg:text-[1.5rem] tracking-tight" style={{ color: isHome ? "rgba(255, 255, 255, 0.9)" : "var(--text-primary)" }}>
+          <span className="ml-2 lg:ml-3 font-extrabold text-[1.15rem] lg:text-[1.3rem] tracking-tight" style={{ color: isTransparent ? "rgba(255, 255, 255, 0.95)" : "var(--text-primary)" }}>
             Loyal String
           </span>
         </Link>
@@ -65,7 +79,7 @@ export default function Header() {
         <nav className="desktop-nav">
           <ul className="nav-list flex items-center gap-8">
             {navLinks.map((link) => (
-              <li key={link.name} className="relative group py-4">
+              <li key={link.name} className="relative group py-2">
                 <Link
                   href={link.path}
                   className={`nav-link flex items-center gap-1 ${pathname === link.path ? "active" : ""}`}
@@ -91,13 +105,10 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Contact & Cart Desktop */}
+        {/* Contact Desktop */}
         <div className="hidden lg:flex items-center gap-6">
-          <Link href="/cart" aria-label="Cart" style={{ color: isHome ? '#fff' : 'inherit', transition: 'opacity 0.2s' }} className="hover:opacity-80">
-            <ShoppingCart size={24} />
-          </Link>
-          <a href="tel:+911234567890" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Phone size={18} />
+          <a href="tel:+911234567890" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', padding: '0.5rem 1.25rem' }}>
+            <Phone size={16} />
             +91 123 456 7890
           </a>
         </div>
@@ -107,7 +118,7 @@ export default function Header() {
           className="mobile-toggle"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
-          style={{ color: isHome ? "#fff" : "inherit" }}
+          style={{ color: isTransparent ? "#fff" : "var(--text-primary)" }}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -127,6 +138,7 @@ export default function Header() {
                   href={link.path}
                   className="mobile-nav-link font-semibold block py-2"
                   onClick={() => !link.dropdown && setIsOpen(false)}
+                  style={{ color: "var(--text-primary)" }}
                 >
                   {link.name}
                 </Link>
@@ -137,7 +149,7 @@ export default function Header() {
                         key={drop.name} 
                         href={drop.path}
                         className="text-sm opacity-80 hover:opacity-100 block py-1"
-                        style={{ color: 'inherit' }}
+                        style={{ color: 'var(--text-primary)' }}
                         onClick={() => setIsOpen(false)}
                       >
                         - {drop.name}
@@ -147,24 +159,15 @@ export default function Header() {
                 )}
               </li>
             ))}
-            <li>
-              <Link
-                href="/cart"
-                className="mobile-nav-link"
-                onClick={() => setIsOpen(false)}
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-              >
-                <ShoppingCart size={20} /> Cart
-              </Link>
-            </li>
+
             <li>
               <a
                 href="tel:+911234567890"
                 className="btn btn-primary"
                 onClick={() => setIsOpen(false)}
-                style={{ width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: "1rem" }}
+                style={{ width: "100%", display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: "1rem", fontSize: '0.9rem', padding: '0.75rem' }}
               >
-                <Phone size={18} /> +91 123 456 7890
+                <Phone size={16} /> +91 123 456 7890
               </a>
             </li>
           </ul>
