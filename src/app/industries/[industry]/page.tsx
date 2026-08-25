@@ -63,67 +63,62 @@ export default async function IndustryPage({ params }: { params: Promise<{ indus
   }
 
   return (
-    <div className="pt-8 pb-24 min-h-screen bg-slate-50">
+    <div className="pt-8 pb-12 min-h-screen bg-slate-50">
       <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-        <Link href="/" className="inline-flex items-center text-slate-500 font-semibold hover:text-slate-900 mb-8 transition-colors">
-          <ArrowRight className="rotate-180 mr-2" size={20} />
-          Back to Home
-        </Link>
-        
-        <div className="bg-white rounded-[2.5rem] p-8 lg:p-16 shadow-sm border border-slate-100 mb-12">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="mb-12 mt-4">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
             <div className="w-full lg:w-1/2">
               <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
                 {data.title}
               </h1>
-              <p className="text-xl text-blue-600 font-bold mb-8">
+              <p className="text-xl text-blue-600 font-bold mb-6">
                 {data.subtitle}
               </p>
               <p className="text-slate-600 text-[1.1rem] leading-[1.8] mb-10">
                 {data.description}
               </p>
-              
+
               <div className="flex gap-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md transition-all shadow-md hover:shadow-lg hover:-translate-y-1">
                   Contact Sales
                 </button>
-                <button className="bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-bold py-4 px-10 rounded-xl transition-all">
+                <button className="bg-white border border-slate-300 hover:border-slate-400 text-slate-700 font-bold py-3 px-8 rounded-md transition-all">
                   Download Brochure
                 </button>
               </div>
             </div>
-            
+
             <div className="w-full lg:w-1/2">
-              <div className="rounded-[2rem] overflow-hidden shadow-2xl relative aspect-[4/3]">
+              <div className="overflow-hidden shadow-xl relative aspect-[4/3] rounded-sm">
                 <img src={data.image} alt={data.title} className="absolute inset-0 w-full h-full object-cover" />
               </div>
             </div>
           </div>
-          
-          <div className="mt-20 border-t border-slate-100 pt-16">
+
+          <div className="mt-12 border-t border-slate-200 pt-10">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore Our Solutions</h2>
               <p className="text-slate-600 text-lg">Click through the categories below to learn exactly how we can optimize your operations.</p>
             </div>
-            
+
             {/* Interactive Solutions UI or Cards */}
             {resolvedParams.industry === 'retailer' ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 {data.solutions.map((sol: any, i: number) => (
-                  <Link 
-                    key={i} 
-                    href={sol.href} 
+                  <Link
+                    key={i}
+                    href={sol.href}
                     target={sol.href.startsWith('http') ? '_blank' : '_self'}
-                    className="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:bg-blue-600 hover:text-white transition-all group shadow-md hover:shadow-2xl hover:-translate-y-2 flex flex-col"
+                    className="bg-white border border-slate-100 rounded-3xl overflow-hidden transition-all group shadow-md hover:shadow-2xl hover:-translate-y-2 flex flex-col"
                   >
                     <div className="w-full h-48 sm:h-56 overflow-hidden relative">
                       <img src={sol.image} alt={sol.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-white">{sol.name}</h3>
-                      <p className="text-slate-600 group-hover:text-blue-100 text-[0.95rem] leading-relaxed mb-6 flex-grow">{sol.detail}</p>
-                      <div className="mt-auto flex items-center text-blue-600 font-semibold group-hover:text-white">
+                      <h3 className="text-xl font-bold mb-3 text-slate-900 transition-colors group-hover:text-blue-600">{sol.name}</h3>
+                      <p className="text-slate-600 text-[0.95rem] leading-relaxed mb-6 flex-grow">{sol.detail}</p>
+                      <div className="mt-auto flex items-center text-blue-600 font-semibold">
                         Explore <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>

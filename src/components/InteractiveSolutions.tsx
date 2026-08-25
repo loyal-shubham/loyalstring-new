@@ -12,32 +12,33 @@ export default function InteractiveSolutions({ solutions }: { solutions: Solutio
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 mt-12 mb-16">
+    <div className="flex flex-col lg:flex-row gap-12 mt-12">
       {/* Sidebar Navigation */}
-      <div className="w-full lg:w-2/5 flex flex-col gap-3">
+      <div className="w-full lg:w-1/3 flex flex-col">
         {solutions.map((sol, i) => (
-          <button 
+          <button
             key={i}
             onClick={() => setActiveIndex(i)}
-            className={`text-left p-5 rounded-xl flex items-center justify-between transition-all duration-300 ${
-              activeIndex === i 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20 scale-[1.02]' 
-                : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-100'
-            }`}
+            className={`text-left py-4 px-6 flex items-center justify-between transition-all duration-300 border-l-4 ${activeIndex === i
+                ? 'border-blue-600 bg-blue-50/50 text-blue-700 font-bold'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
           >
-            <span className="font-semibold text-[1.05rem]">{sol.name}</span>
-            <ChevronRight size={20} className={`transition-transform duration-300 ${activeIndex === i ? 'text-white translate-x-1' : 'text-slate-400'}`} />
+            <span className="text-[1.05rem]">{sol.name}</span>
+            <ChevronRight size={18} className={`transition-transform duration-300 ${activeIndex === i ? 'text-blue-600 translate-x-1' : 'text-slate-300'}`} />
           </button>
         ))}
       </div>
-      
+
       {/* Detailed Content Pane */}
-      <div className="w-full lg:w-3/5 bg-slate-50 border border-slate-100 p-8 lg:p-10 rounded-2xl flex flex-col justify-center transition-all duration-300">
-        <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-6">
-          <CheckCircle2 className="text-blue-600" size={32} />
+      <div className="w-full lg:w-2/3 flex flex-col justify-center py-6 px-4 lg:px-12">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <CheckCircle2 className="text-blue-600" size={24} />
+          </div>
+          <h3 className="text-3xl font-bold text-slate-900">{solutions[activeIndex].name}</h3>
         </div>
-        <h3 className="text-3xl font-bold text-slate-900 mb-4">{solutions[activeIndex].name}</h3>
-        <p className="text-slate-600 text-[1.1rem] leading-relaxed">
+        <p className="text-slate-600 text-[1.1rem] leading-relaxed max-w-3xl">
           {solutions[activeIndex].detail}
         </p>
       </div>

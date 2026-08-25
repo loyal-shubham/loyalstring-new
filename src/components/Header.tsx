@@ -42,10 +42,10 @@ export default function Header() {
       name: "Services", 
       path: "/services",
       dropdown: [
-        { name: "Software Development", path: "/services/software" },
+        { name: "Software Development", path: "/services/software-development" },
         { name: "Digital Marketing", path: "/services/digital-marketing" },
         { name: "SEO", path: "/services/seo" },
-        { name: "Business Consulting", path: "/services/consulting" },
+        { name: "Business Consulting", path: "/services/business-consulting" },
       ]
     },
     { 
@@ -93,7 +93,7 @@ export default function Header() {
                       <Link 
                         key={drop.name} 
                         href={drop.path}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
                       >
                         {drop.name}
                       </Link>
