@@ -10,6 +10,7 @@ import "./Header.css";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -131,34 +132,49 @@ export default function Header() {
           animate={{ opacity: 1, y: 0 }}
           className="mobile-nav"
         >
-          <ul className="mobile-nav-list max-h-[70vh] overflow-y-auto pb-6">
-            {navLinks.map((link) => (
-              <li key={link.name} className="border-b border-slate-100/10 pb-2">
-                <Link
-                  href={link.path}
-                  className="mobile-nav-link font-semibold block py-2"
-                  onClick={() => !link.dropdown && setIsOpen(false)}
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {link.name}
-                </Link>
-                {link.dropdown && (
-                  <div className="pl-4 mt-2 flex flex-col gap-3">
-                    {link.dropdown.map(drop => (
+          <ul className="mobile-nav-list max-h-[70vh] overflow-y-auto pb-6 pt-4">
+            {navLinks.map((link) => {
+              const hasDropdown = !!link.dropdown;
+              const isExpanded = expandedMenu === link.name;
+              
+              return (
+              <li key={link.name} className="pb-5">
+                {hasDropdown ? (
+                  <div 
+                    className="flex justify-between items-center cursor-pointer"
+                    onClick={() => setExpandedMenu(isExpanded ? null : link.name)}
+                  >
+                    <span className="font-semibold text-slate-800 text-[1.1rem]">
+                      {link.name}
+                    </span>
+                    <ChevronDown size={20} className={`text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                  </div>
+                ) : (
+                  <Link
+                    href={link.path}
+                    className="font-semibold text-slate-800 text-[1.1rem] block"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+                
+                {hasDropdown && isExpanded && (
+                  <div className="pl-4 mt-4 flex flex-col gap-4">
+                    {link.dropdown?.map(drop => (
                       <Link 
                         key={drop.name} 
                         href={drop.path}
-                        className="text-sm opacity-80 hover:opacity-100 block py-1"
-                        style={{ color: 'var(--text-primary)' }}
+                        className="text-[0.95rem] text-slate-600 hover:text-blue-600 block"
                         onClick={() => setIsOpen(false)}
                       >
-                        - {drop.name}
+                        {drop.name}
                       </Link>
                     ))}
                   </div>
                 )}
               </li>
-            ))}
+            )})}
 
             <li>
               <a

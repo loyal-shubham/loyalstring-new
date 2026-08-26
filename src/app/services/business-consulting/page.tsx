@@ -71,9 +71,14 @@ export default function BusinessConsultingPage() {
             <p className="text-slate-600 text-base leading-relaxed mb-10 max-w-4xl">
               Leverage our expert consulting services to streamline your operations, integrate cutting-edge technologies, and formulate robust roadmaps that future-proof your business in a competitive market. We act as an extension of your leadership team, providing objective insights and actionable strategies.
             </p>
-            <Link href="/contact" className="bg-blue-600 text-white font-semibold py-2.5 px-6 rounded-md hover:bg-blue-700 transition-colors inline-block">
-              Start Your Project
-            </Link>
+            <div className="flex gap-3 sm:gap-4 w-full max-w-[400px] sm:max-w-none mx-auto sm:mx-0">
+              <Link href="/contact" className="flex-1 sm:flex-none flex items-center justify-center text-center bg-blue-600 text-white font-semibold py-3 sm:py-2.5 px-4 sm:px-8 rounded-md hover:bg-blue-700 transition-colors text-[0.95rem] sm:text-base leading-[1.2]">
+                <span>Contact<br className="sm:hidden" /> Sales</span>
+              </Link>
+              <button className="flex-1 sm:flex-none flex items-center justify-center text-center bg-white border border-slate-200 text-[#1e293b] font-semibold py-3 sm:py-2.5 px-4 sm:px-8 rounded-md hover:bg-slate-50 transition-colors text-[0.95rem] sm:text-base leading-[1.2]">
+                <span>Download<br className="sm:hidden" /> Brochure</span>
+              </button>
+            </div>
           </div>
 
           <div>
