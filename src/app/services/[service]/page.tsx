@@ -113,18 +113,15 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         {/* Abstract background for banner */}
         <div className={`absolute inset-0 opacity-[0.15] bg-gradient-to-br ${theme.gradient}`}></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-white rounded-full blur-[100px] opacity-10"></div>
-        
+
         <div className="relative z-10 max-w-[1500px] mx-auto px-6 lg:px-12">
           <Link href="/" className="inline-flex items-center text-white/70 font-semibold hover:text-white mb-10 transition-colors">
             <ArrowRight className="rotate-180 mr-2" size={20} />
             Back to Home
           </Link>
-          
+
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="w-full lg:w-1/2 max-w-3xl">
-              <div className={`w-16 h-16 rounded-2xl ${theme.bg} flex items-center justify-center ${theme.text} mb-8 shadow-lg`}>
-                <Icon size={32} />
-              </div>
               <h1 className="text-4xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
                 {data.title}
               </h1>
@@ -135,10 +132,10 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
 
             <div className="w-full lg:w-1/2">
               <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
-                <img 
-                  src={`/images/services/${resolvedParams.service}.jpg`} 
-                  alt={data.title} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105" 
+                <img
+                  src={`/images/services/${resolvedParams.service}.jpg`}
+                  alt={data.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none"></div>
                 {/* Subtle gradient overlay to blend image nicely */}
@@ -152,17 +149,17 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
       {/* Content Section */}
       <section className="py-20 lg:py-28 relative">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          
+
           {/* Details / Overview */}
           <div className="max-w-4xl mb-24">
             <div className="flex items-center gap-4 mb-6">
-              <div className={`w-12 h-1 rounded-full bg-gradient-to-r ${theme.gradient}`}></div>
+              {/* <div className="w-10 h-0.5 bg-blue-600"></div> */}
               <h2 className="text-3xl font-bold text-slate-900">Service Overview</h2>
             </div>
-            <p className="text-slate-600 text-[1.2rem] leading-relaxed mb-10">
+            <p className="text-slate-600 text-base leading-relaxed mb-10 max-w-4xl">
               {data.description}
             </p>
-            <Link href="/contact" className={`${theme.btn} text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 inline-block`}>
+            <Link href="/contact" className="bg-blue-600 text-white font-semibold py-2.5 px-6 rounded-md hover:bg-blue-700 transition-colors inline-block">
               Start Your Project
             </Link>
           </div>
@@ -190,7 +187,7 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
               ))}
             </div>
           </div>
-          
+
         </div>
       </section>
     </div>

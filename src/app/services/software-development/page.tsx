@@ -51,20 +51,15 @@ export default function SoftwareDevelopmentPage() {
     <div className="min-h-screen bg-slate-50">
       {/* Banner / Hero Section */}
       <section className="relative w-full h-[250px] lg:h-[300px] flex flex-col justify-center items-center text-center">
-        <img 
-          src="/images/services/software-development.jpg" 
-          alt="Software Development" 
-          className="absolute inset-0 w-full h-full object-cover z-0" 
+        <img
+          src="/images/services/software-development.jpg"
+          alt="Software Development"
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-slate-900/75 z-10"></div>
-        
+
         <div className="relative z-20 max-w-4xl mx-auto px-6 mt-8">
-          <div className="flex justify-center mb-6">
-            <div className={`w-16 h-16 rounded-2xl ${theme.bg} flex items-center justify-center shadow-lg`}>
-              <Code size={32} className={theme.text} />
-            </div>
-          </div>
           <h1 className="text-4xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
             Software Development
           </h1>
@@ -77,16 +72,16 @@ export default function SoftwareDevelopmentPage() {
       {/* Content Section */}
       <section className="py-20 lg:py-28 relative">
         <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
-          
+
           <div className="max-w-4xl mb-24">
             <div className="flex items-center gap-4 mb-6">
-              <div className={`w-12 h-1 rounded-full bg-gradient-to-r ${theme.gradient}`}></div>
+              {/* <div className="w-10 h-0.5 bg-blue-600"></div> */}
               <h2 className="text-3xl font-bold text-slate-900">Service Overview</h2>
             </div>
-            <p className="text-slate-600 text-[1.2rem] leading-relaxed mb-10">
+            <p className="text-slate-600 text-base leading-relaxed mb-10 max-w-4xl">
               We engineer highly scalable, secure, and intuitive software solutions leveraging the latest technologies. From modernizing legacy applications to building complex AI-driven platforms from scratch, our development team ensures top-tier performance tailored to your specific business needs. We employ an Agile methodology to ensure rapid delivery without compromising on quality or security.
             </p>
-            <Link href="/contact" className={`${theme.btn} text-white font-bold py-3 px-8 rounded-md transition-all shadow-md hover:shadow-lg hover:-translate-y-1 inline-block`}>
+            <Link href="/contact" className="bg-blue-600 text-white font-semibold py-2.5 px-6 rounded-md hover:bg-blue-700 transition-colors inline-block">
               Start Your Project
             </Link>
           </div>
@@ -115,7 +110,7 @@ export default function SoftwareDevelopmentPage() {
               ))}
             </div>
           </div>
-          
+
         </div>
       </section>
     </div>
