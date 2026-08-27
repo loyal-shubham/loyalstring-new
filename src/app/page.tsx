@@ -331,21 +331,21 @@ export default function Home() {
               What makes Loyal String different is our end-to-end expertise. From custom enterprise software to in-house manufacturing of high-performance RFID hardware, a dedicated project manager oversees your entire solution to ensure absolute perfection.
             </p>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
-                  <Check size={18} style={{ color: '#7c3aed' }} strokeWidth={2.5} />
+              <li className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-indigo-100 relative text-indigo-600 shrink-0">
+                  <Check size={18} color="#7c3aed" strokeWidth={2.5} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                 </div>
                 <span className="font-semibold text-[1.05rem] text-slate-800">Upto 60% better rates than the Market</span>
               </li>
-              <li className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
-                  <Check size={18} style={{ color: '#7c3aed' }} strokeWidth={2.5} />
+              <li className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-indigo-100 relative text-indigo-600 shrink-0">
+                  <Check size={18} color="#7c3aed" strokeWidth={2.5} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                 </div>
                 <span className="font-semibold text-[1.05rem] text-slate-800">Dedicated Project Manager for each Order</span>
               </li>
-              <li className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
-                  <Check size={18} style={{ color: '#7c3aed' }} strokeWidth={2.5} />
+              <li className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-indigo-100 relative text-indigo-600 shrink-0">
+                  <Check size={18} color="#7c3aed" strokeWidth={2.5} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                 </div>
                 <span className="font-semibold text-[1.05rem] text-slate-800">Multi-tier Quality Control System</span>
               </li>
