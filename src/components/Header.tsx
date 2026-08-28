@@ -59,6 +59,7 @@ export default function Header() {
       ]
     },
     { name: "About Us", path: "/about" },
+    { name: "Vision 2030", path: "/vision-2030" },
     { name: "Contact", path: "/contact" }
   ];
 
