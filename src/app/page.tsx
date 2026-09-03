@@ -88,7 +88,7 @@ export default function Home() {
                   <div className="w-10 h-10 rounded-full bg-blue-50 relative text-blue-600 mb-3">
                     <Check size={20} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </div>
-                  <h4 className="font-bold text-slate-900 mb-2">Garments</h4>
+                  <h4 className="font-bold text-slate-900 mb-2">Textile Management</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">Fast bulk scanning, dynamic stock optimization, and smooth omnichannel fulfillment.</p>
                 </div>
 

@@ -14,7 +14,7 @@ export default function GarmentsIndustryPage() {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="w-full lg:w-1/2">
               <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-                Garment Management Systems
+                Textile Management Systems
               </h1>
               <p className="text-xl text-blue-600 font-bold mb-8">
                 Omnichannel order fulfillment and dynamic stock optimization.
@@ -56,7 +56,7 @@ export default function GarmentsIndustryPage() {
             
             <div className="w-full lg:w-1/2">
               <div className="rounded-[2rem] overflow-hidden shadow-2xl relative aspect-[4/3] bg-slate-100">
-                <img src="/images/retail_rfid.png" alt="Garment Tracking" className="absolute inset-0 w-full h-full object-cover" />
+                <img src="/images/retail_rfid.png" alt="Textile Tracking" className="absolute inset-0 w-full h-full object-cover" />
               </div>
             </div>
           </div>

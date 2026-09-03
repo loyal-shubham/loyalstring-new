@@ -11,7 +11,7 @@ const industryData = {
     description: "Our comprehensive retail solutions bring complete visibility to your supply chain, from the distribution center to the sales floor. Empower your staff and delight your customers with real-time stock data.",
     solutions: [
       { name: "Jewellery Tracking", detail: "Precision item-level tracking, real-time audit capabilities, and high-end security for valuable assets. Ensure your premium items are always accounted for.", href: "https://sparklerfid.com", image: "/images/jewellery_rfid_card.png" },
-      { name: "Garment Management", detail: "Fast bulk scanning, dynamic stock optimization, and smooth omnichannel order fulfillment. Keep your shelves stocked with the right sizes at all times.", href: "/industries/retailer/garments", image: "/images/garment_rfid_card.png" },
+      { name: "Textile Management", detail: "Fast bulk scanning, dynamic stock optimization, and smooth omnichannel order fulfillment. Keep your shelves stocked with the right sizes at all times.", href: "/industries/retailer/garments", image: "/images/garment_rfid_card.png" },
       { name: "EAS Loss Prevention", detail: "Advanced loss prevention gates and hard tags tailored for high-traffic retail environments to virtually eliminate retail shrinkage.", href: "/industries/retailer/eas", image: "/images/eas_rfid_card.png" }
     ],
     image: "/images/retail_rfid.png"
