@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+      <div className="relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 min-w-0">
         {/* Left Content */}
         <div className="w-full lg:w-3/5">
           <motion.div
@@ -58,7 +58,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-slate-900 text-white font-bold text-[13px] tracking-[0.15em] uppercase mb-8 shadow-sm">
+            <div className="inline-flex max-w-full px-3 sm:px-4 py-1.5 rounded-full bg-slate-900 text-white font-bold text-[11px] sm:text-[13px] tracking-[0.08em] sm:tracking-[0.15em] uppercase mb-8 shadow-sm break-words">
               LOYALSTRING VISION 2030
             </div>
           </motion.div>
@@ -67,7 +67,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[4.5rem] font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight mb-8 break-words"
           >
             Engineering Technology for a <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-900">Smarter, Connected</span> World.
           </motion.h1>
@@ -78,7 +78,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg lg:text-xl text-slate-600 leading-[1.7] max-w-3xl mb-10"
           >
-            At LoyalString, we believe the next generation of businesses will be built on intelligent software, connected systems, automation and data. Vision 2030 is our roadmap to evolve LoyalString into a globally recognised technology organisation—building scalable digital platforms and intelligent solutions that help businesses operate smarter, move faster and make better decisions.
+            At LoyalString, we believe the next generation of businesses will be built on intelligent software, connected systems, robotics and automation, and data. Vision 2030 is our roadmap to evolve LoyalString into a globally recognised technology organisation—building scalable digital platforms and intelligent solutions that help businesses operate smarter, move faster and make better decisions.
           </motion.p>
 
           <motion.div 
@@ -105,10 +105,10 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="flex items-center gap-3 text-sm font-semibold text-slate-500 uppercase tracking-widest"
+            className="flex flex-wrap items-center gap-3 text-sm font-semibold text-slate-500 uppercase tracking-wide sm:tracking-widest min-w-0"
           >
-            <Code size={16} className="text-slate-400" />
-            <span>Software. Intelligence. Automation. Connectivity.</span>
+            <Code size={16} className="text-slate-400 shrink-0" />
+            <span className="min-w-0 break-words">Software. Intelligence. Robotics and Automation. Connectivity.</span>
           </motion.div>
         </div>
 

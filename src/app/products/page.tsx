@@ -30,7 +30,7 @@ export default function ProductsPage() {
           />
           <ProductCard 
             title="Fixed Portal Scanner System" 
-            description="Automated gateway scanners for seamless dock door tracking without manual intervention."
+            description="Gateway scanners for robotics and automation at dock doors, tracking movement without manual intervention."
             type="system"
           />
         </div>

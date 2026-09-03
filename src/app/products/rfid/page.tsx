@@ -19,7 +19,7 @@ export default function RFIDPage() {
     },
     {
       title: "Fixed Portal Systems",
-      desc: "Automated RFID gateways designed for dock doors and transition points to track movement without human intervention.",
+      desc: "RFID gateways for robotics and automation at dock doors and transition points, tracking movement without human intervention.",
       icon: <Wifi size={22} />
     },
     {

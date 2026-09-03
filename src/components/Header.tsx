@@ -77,13 +77,13 @@ export default function Header() {
   return (
     <header className={`header ${headerClass}`}>
       <div className="header-container">
-        <Link href="/" className="logo flex items-center no-underline">
+        <Link href="/" className="logo flex items-center no-underline min-w-0 shrink">
           <img
             src={isTransparent ? "/logos/logo_white.png" : "/logos/logo_black.png"}
             alt="Loyal String Logo"
             className="h-10 lg:h-[60px] w-auto"
           />
-          <span className="ml-2 lg:ml-3 font-extrabold text-[1.15rem] lg:text-[1.3rem] tracking-tight" style={{ color: isTransparent ? "rgba(255, 255, 255, 0.95)" : "var(--text-primary)" }}>
+          <span className="ml-2 lg:ml-3 font-extrabold text-[1rem] sm:text-[1.15rem] lg:text-[1.3rem] tracking-tight" style={{ color: isTransparent ? "rgba(255, 255, 255, 0.95)" : "var(--text-primary)" }}>
             Loyal String
           </span>
         </Link>

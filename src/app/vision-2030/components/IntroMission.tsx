@@ -9,7 +9,7 @@ export default function IntroMission() {
     "Enterprise Software",
     "Artificial Intelligence",
     "Cloud Platforms",
-    "Automation",
+    "Robotics and Automation",
     "RFID & IoT",
     "Data Intelligence",
     "Mobile Technologies",
@@ -20,7 +20,7 @@ export default function IntroMission() {
   const missionBullets = [
     "Enterprise technology",
     "Process simplification",
-    "Automation",
+    "Robotics and Automation",
     "Physical-digital connectivity",
     "Actionable intelligence",
     "Secure and scalable platforms",
@@ -31,7 +31,7 @@ export default function IntroMission() {
 
   return (
     <section className="py-24 lg:py-32 bg-white relative">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section 02: Technology Without Boundaries */}
         <div className="max-w-4xl mx-auto text-center mb-24">
           <motion.div
@@ -50,7 +50,7 @@ export default function IntroMission() {
               "Technology should solve real business problems—not create additional complexity."
             </p>
             <p className="text-lg text-slate-600 leading-[1.8] mb-12">
-              As industries evolve, organisations are moving from disconnected applications and manual processes toward intelligent, connected and automated digital ecosystems. Our Vision 2030 is to position LoyalString at the centre of this transformation.
+              As industries evolve, organisations are moving from disconnected applications and manual processes toward intelligent, connected ecosystems powered by robotics and automation. Our Vision 2030 is to position LoyalString at the centre of this transformation.
             </p>
           </motion.div>
 

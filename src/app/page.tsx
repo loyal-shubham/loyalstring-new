@@ -57,7 +57,7 @@ export default function Home() {
 
       {/* Industries We Serve */}
       <section className="bg-white relative border-t border-slate-100 pb-20 lg:pb-32">
-        <div className="py-20 lg:py-32 text-center max-w-3xl mx-auto px-6">
+        <div className="py-20 lg:py-20 text-center max-w-3xl mx-auto px-6">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
             Industries We Serve
           </h2>
@@ -72,7 +72,7 @@ export default function Home() {
             <div className="w-full lg:w-1/2 px-8 py-16 lg:px-20 flex flex-col justify-center">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">RFID Solutions for Retailers</h2>
               <p className="text-slate-600 mb-10 leading-relaxed text-[1.05rem]">
-                Enable <strong>automated inventory tracking, loss prevention, and seamless customer experiences</strong> across retail operations. Support end-to-end processes including <strong>supply chain visibility, fast checkout, and high-security anti-theft tags</strong> to achieve intelligent optimization.
+                Enable <strong>inventory tracking through robotics and automation, loss prevention, and seamless customer experiences</strong> across retail operations. Support end-to-end processes including <strong>supply chain visibility, fast checkout, and high-security anti-theft tags</strong> to achieve intelligent optimization.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
@@ -118,7 +118,7 @@ export default function Home() {
             <div className="w-full lg:w-1/2 px-8 py-16 lg:px-20 flex flex-col justify-center">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Smart Warehousing & Logistics</h2>
               <p className="text-slate-600 mb-10 leading-relaxed text-[1.05rem]">
-                Enable <strong>real-time cargo tracking, automated data capture, and end-to-end supply chain visibility</strong>. Optimize operations from freight sorting to last-mile delivery with 99.9% accuracy.
+                Enable <strong>real-time cargo tracking, robotics and automation for data capture, and end-to-end supply chain visibility</strong>. Optimize operations from freight sorting to last-mile delivery with 99.9% accuracy.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
@@ -127,7 +127,7 @@ export default function Home() {
                     <Check size={20} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2">Cross-Dock Transfers</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">Automatically log cargo quantity and destination, reducing manual errors by 40%.</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">Robotics and RFID log cargo quantity and destination, reducing manual errors by 40%.</p>
                 </div>
 
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
@@ -135,7 +135,7 @@ export default function Home() {
                     <Check size={20} className="stroke-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2">Production Lines</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">Component tracking, workflow automation, and quality compliance for defect tracing.</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">Component tracking, robotics and automation, and quality compliance for defect tracing.</p>
                 </div>
               </div>
 
@@ -156,7 +156,7 @@ export default function Home() {
             <div className="w-full lg:w-1/2 px-8 py-16 lg:px-20 flex flex-col justify-center">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Medical Asset Tracking</h2>
               <p className="text-slate-600 mb-10 leading-relaxed text-[1.05rem]">
-                Deploy <strong>medical-grade tracking systems</strong> for critical hospital assets. Ensure patient safety through <strong>real-time localization, automated inventory management, and strict compliance monitoring</strong>.
+                Deploy <strong>medical-grade tracking systems</strong> for critical hospital assets. Ensure patient safety through <strong>real-time localization, robotics and automation for inventory management, and strict compliance monitoring</strong>.
               </p>
 
               <div className="grid grid-cols-1 gap-4 mb-12">
@@ -186,7 +186,7 @@ export default function Home() {
             <div className="w-full lg:w-1/2 px-8 py-16 lg:px-20 flex flex-col justify-center">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Intelligent Library Systems</h2>
               <p className="text-slate-600 mb-10 leading-relaxed text-[1.05rem]">
-                Transform traditional libraries with <strong>automated cataloging and self-checkout kiosks</strong>. Provide an intuitive patron experience while maintaining <strong>airtight security and inventory control</strong>.
+                Transform traditional libraries with <strong>robotics and automation for cataloging and self-checkout kiosks</strong>. Provide an intuitive patron experience while maintaining <strong>airtight security and inventory control</strong>.
               </p>
 
               <div className="grid grid-cols-1 gap-4 mb-12">
@@ -420,6 +420,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-    </div>
+    </div> 
   );
 }

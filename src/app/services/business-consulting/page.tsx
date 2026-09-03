@@ -22,7 +22,7 @@ export default function BusinessConsultingPage() {
     },
     {
       title: "Workflow Optimization",
-      desc: "Identifying bottlenecks and implementing automated solutions to increase operational efficiency.",
+      desc: "Identifying bottlenecks and implementing robotics and automation solutions to increase operational efficiency.",
       icon: <Network size={28} className={theme.text} />
     },
     {

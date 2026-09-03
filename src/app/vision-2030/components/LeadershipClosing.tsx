@@ -10,7 +10,7 @@ export default function LeadershipClosing() {
     <>
       {/* Section 14: Leadership Message */}
       <section className="py-24 lg:py-32 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto bg-white rounded-[2rem] p-10 lg:p-16 shadow-xl border border-slate-100 relative overflow-hidden">
              
              {/* Decorative element */}
@@ -32,7 +32,7 @@ export default function LeadershipClosing() {
                    "Vision 2030 represents the future we are building for LoyalString. Our ambition is not to be defined by one product, one technology or one industry. We want to build an organisation capable of continuously understanding complex business problems and solving them through technology."
                  </p>
                  <p>
-                   "Enterprise software, artificial intelligence, automation, RFID, IoT, cloud and data intelligence are not independent technologies in our vision. Together, they form the foundation for the next generation of connected businesses."
+                   "Enterprise software, artificial intelligence, robotics and automation, RFID, IoT, cloud and data intelligence are not independent technologies in our vision. Together, they form the foundation for the next generation of connected businesses."
                  </p>
                  <p className="text-base text-slate-500">
                    "Solutions such as Sparkle RFID demonstrate how this philosophy can be transformed into specialised technology for real industries."
@@ -116,12 +116,12 @@ export default function LeadershipClosing() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-widest max-w-2xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-x-2 gap-y-2 sm:gap-4 text-[10px] sm:text-sm font-bold text-slate-400 uppercase tracking-wider sm:tracking-widest max-w-full mx-auto px-2">
               <span>Software</span>
               <span className="text-slate-700">•</span>
               <span>AI</span>
               <span className="text-slate-700">•</span>
-              <span>Automation</span>
+              <span>Robotics and Automation</span>
               <span className="text-slate-700">•</span>
               <span>Cloud</span>
               <span className="text-slate-700">•</span>

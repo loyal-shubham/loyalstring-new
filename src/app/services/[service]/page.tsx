@@ -32,7 +32,7 @@ const serviceData = {
       "Social Media Management",
       "Pay-Per-Click (PPC) Campaigns",
       "Content Marketing & Strategy",
-      "Email Marketing Automation",
+      "Email Marketing Campaigns",
       "Conversion Rate Optimization"
     ]
   },
@@ -59,7 +59,7 @@ const serviceData = {
       "Operational Workflow Optimization",
       "Technology Stack Assessment",
       "Go-to-Market Strategy",
-      "Business Process Automation"
+      "Robotics and Automation for Business Processes"
     ]
   }
 };

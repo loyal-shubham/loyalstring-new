@@ -13,12 +13,12 @@ import LeadershipClosing from "./components/LeadershipClosing";
 export const metadata: Metadata = {
   title: "Vision 2030 | LoyalString",
   description: "LoyalString's roadmap to evolve into a globally recognised technology organisation—building scalable digital platforms and intelligent solutions.",
-  keywords: "LoyalString Vision 2030, Enterprise Software, Artificial Intelligence, Automation, RFID, IoT, Data Intelligence, Cloud Platforms",
+  keywords: "LoyalString Vision 2030, Enterprise Software, Artificial Intelligence, Robotics and Automation, RFID, IoT, Data Intelligence, Cloud Platforms",
 };
 
 export default function Vision2030Page() {
   return (
-    <main className="flex flex-col min-h-screen bg-slate-50 text-slate-900 overflow-hidden">
+    <main className="flex flex-col min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden max-w-full">
       <Hero />
       <IntroMission />
       <Ecosystem />

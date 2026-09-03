@@ -2,12 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border-radius: 0;
   border-top: none;
   border-left: none;
   border-right: none;
   transition: all 0.3s ease;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .header-transparent {
@@ -169,7 +171,11 @@
   font-weight: 500;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
+  .header {
+    padding: 0.5rem 2rem;
+    overflow-x: visible;
+  }
   .desktop-nav {
     display: block;
     flex-grow: 1;

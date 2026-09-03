@@ -34,9 +34,9 @@ export default function RoadmapAndPeople() {
     },
     {
       year: "2028",
-      verb: "AUTOMATE",
+      verb: "ROBOTICS",
       title: "Reduce Operational Complexity",
-      detail: "Workflow automation, intelligent business processes, reconciliation, monitoring, notifications, operational analytics."
+      detail: "Industrial robotics and software automation for workflows, intelligent business processes, reconciliation, monitoring, notifications, operational analytics."
     },
     {
       year: "2029",
@@ -48,13 +48,13 @@ export default function RoadmapAndPeople() {
       year: "2030",
       verb: "TRANSFORM",
       title: "Global Intelligent Ecosystem",
-      detail: "Software + AI + Cloud + Automation + RFID/IoT + Data + connected technologies working seamlessly together."
+      detail: "Software + AI + Cloud + Robotics and Automation + RFID/IoT + Data + connected technologies working seamlessly together."
     }
   ];
 
   return (
     <section className="py-24 lg:py-32 bg-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 space-y-24 lg:space-y-32">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 space-y-24 lg:space-y-32">
         
         {/* Section 12: People, Innovation & Partnerships */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">

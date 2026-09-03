@@ -7,7 +7,7 @@ import InteractiveSolutions from '@/components/InteractiveSolutions';
 const industryData = {
   retailer: {
     title: "RFID Solutions for Retailers",
-    subtitle: "Automate inventory, stop shrinkage, and enhance the customer experience.",
+    subtitle: "Bring robotics and automation to inventory, stop shrinkage, and enhance the customer experience.",
     description: "Our comprehensive retail solutions bring complete visibility to your supply chain, from the distribution center to the sales floor. Empower your staff and delight your customers with real-time stock data.",
     solutions: [
       { name: "Jewellery Tracking", detail: "Precision item-level tracking, real-time audit capabilities, and high-end security for valuable assets. Ensure your premium items are always accounted for.", href: "https://sparklerfid.com", image: "/images/jewellery_rfid_card.png" },
@@ -19,11 +19,11 @@ const industryData = {
   warehousing: {
     title: "Smart Warehousing & Logistics",
     subtitle: "Precision cargo tracking and end-to-end supply chain visibility.",
-    description: "Transform your logistics operations with automated data capture. Eliminate manual scanning errors, speed up cross-dock transfers, and maintain a real-time ledger of your entire inventory.",
+    description: "Transform your logistics operations with robotics and automation for data capture. Eliminate manual scanning errors, speed up cross-dock transfers, and maintain a real-time ledger of your entire inventory.",
     solutions: [
-      { name: "Cross-Dock Transfers", detail: "Automatically log cargo quantity and destination at the dock door, drastically reducing manual processing time." },
-      { name: "Production Line Automation", detail: "Component tracking, workflow automation, and quality compliance for defect tracing right on the assembly line." },
-      { name: "Forklift Tracking", detail: "Equip your forklifts with RFID readers to automatically update stock locations as pallets are moved." },
+      { name: "Cross-Dock Transfers", detail: "Robotics and RFID log cargo quantity and destination at the dock door, drastically reducing manual processing time." },
+      { name: "Production Line Robotics and Automation", detail: "Component tracking, robotics and automation, and quality compliance for defect tracing right on the assembly line." },
+      { name: "Forklift Tracking", detail: "Equip your forklifts with RFID readers to update stock locations in real time as pallets are moved." },
       { name: "Pallet Localization", detail: "Instantly locate specific pallets in massive warehouses using precision zonal tracking." }
     ],
     image: "/images/warehouse_rfid.png"
@@ -31,10 +31,10 @@ const industryData = {
   medical: {
     title: "Medical Asset Tracking",
     subtitle: "Medical-grade tracking for critical hospital assets.",
-    description: "Ensure patient safety and operational efficiency by tracking high-value medical equipment. Reduce time wasted searching for devices and maintain strict compliance with automated audit trails.",
+    description: "Ensure patient safety and operational efficiency by tracking high-value medical equipment. Reduce time wasted searching for devices and maintain strict compliance with robotics-enabled audit trails.",
     solutions: [
       { name: "Equipment Localization", detail: "Instantly locate high-value medical devices across vast hospital wings, ensuring life-saving tools are always at hand." },
-      { name: "Inventory Management", detail: "Automate the tracking of medical supplies, pharmaceuticals, and disposables to prevent stock-outs." },
+      { name: "Inventory Management", detail: "Use robotics and automation to track medical supplies, pharmaceuticals, and disposables to prevent stock-outs." },
       { name: "Compliance Monitoring", detail: "Maintain airtight electronic logs of equipment sterilization cycles and maintenance schedules for regulatory compliance." },
       { name: "Patient Tracking", detail: "Secure, non-intrusive wristbands that help monitor patient flow and reduce wait times in emergency rooms." }
     ],
@@ -42,11 +42,11 @@ const industryData = {
   },
   library: {
     title: "Intelligent Library Systems",
-    subtitle: "Automated cataloging and self-checkout for modern libraries.",
-    description: "Streamline library operations with intelligent RFID systems. Allow patrons to instantly borrow multiple books, secure your collection with anti-theft gates, and automate inventory audits.",
+    subtitle: "Robotics and automation for cataloging and self-checkout in modern libraries.",
+    description: "Streamline library operations with intelligent RFID systems. Allow patrons to instantly borrow multiple books, secure your collection with anti-theft gates, and use robotics and automation for inventory audits.",
     solutions: [
-      { name: "Automated Checkout Kiosks", detail: "Allow patrons to borrow multiple books instantly in a single scan, reducing queues and staff workload." },
-      { name: "Smart Return Drops", detail: "Automated return bins that instantly check-in items and sort them for fast re-shelving." },
+      { name: "Self-Checkout Kiosks", detail: "Allow patrons to borrow multiple books instantly in a single scan, reducing queues and staff workload." },
+      { name: "Smart Return Drops", detail: "Return bins powered by robotics and automation that check-in items instantly and sort them for fast re-shelving." },
       { name: "Anti-theft Security Gates", detail: "Discreet but powerful gates that detect un-checked out items without false alarms." },
       { name: "Handheld Inventory Scanners", detail: "Enable staff to audit entire bookshelves in seconds simply by waving a reader past the spines." }
     ],

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { 
   Bot, 
   Sparkles, 
@@ -12,11 +12,268 @@ import {
   CheckCircle2
 } from "lucide-react";
 
+const WAVE_WORDS = ["Moving", "From", "Software", "That", "Records"] as const;
+const FOLLOW_WORDS = ["to", "Technology", "That"] as const;
+const TYPED_WORD = "Understands";
+
+function AnimatedInsightHeading() {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "-80px" });
+  const prefersReducedMotion = useReducedMotion();
+  const [cycle, setCycle] = useState(0);
+  const [typed, setTyped] = useState(prefersReducedMotion ? TYPED_WORD : "");
+  const [showCursor, setShowCursor] = useState(!prefersReducedMotion);
+
+  useEffect(() => {
+    if (!isInView || prefersReducedMotion) return;
+
+    let cancelled = false;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    let interval: ReturnType<typeof setInterval> | undefined;
+
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => {
+        timeouts.push(setTimeout(resolve, ms));
+      });
+
+    const typeText = (word: string, speed: number, reverse = false) =>
+      new Promise<void>((resolve) => {
+        let i = reverse ? word.length : 0;
+        interval = setInterval(() => {
+          if (cancelled) {
+            if (interval) clearInterval(interval);
+            resolve();
+            return;
+          }
+          i = reverse ? i - 1 : i + 1;
+          setTyped(word.slice(0, Math.max(i, 0)));
+          if ((!reverse && i >= word.length) || (reverse && i <= 0)) {
+            if (interval) clearInterval(interval);
+            resolve();
+          }
+        }, speed);
+      });
+
+    const run = async () => {
+      while (!cancelled) {
+        setCycle((current) => current + 1);
+        setTyped("");
+        setShowCursor(true);
+
+        await wait((WAVE_WORDS.length + FOLLOW_WORDS.length) * 90 + 520);
+        if (cancelled) return;
+
+        await typeText(TYPED_WORD, 72);
+        if (cancelled) return;
+
+        await wait(1600);
+        setShowCursor(false);
+        await wait(2400);
+        if (cancelled) return;
+
+        setShowCursor(true);
+        await typeText(TYPED_WORD, 42, true);
+        if (cancelled) return;
+
+        await wait(800);
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+      timeouts.forEach(clearTimeout);
+      if (interval) clearInterval(interval);
+    };
+  }, [isInView, prefersReducedMotion]);
+
+  return (
+    <h2
+      ref={ref}
+      aria-label="Moving From Software That Records to Technology That Understands"
+      className="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.2]"
+    >
+      {WAVE_WORDS.map((word, i) => (
+        <motion.span
+          key={`wave-${cycle}-${word}-${i}`}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+          animate={isInView ? { opacity: 1, y: [18, -8, 0] } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.55, delay: i * 0.09, ease: "easeOut" }}
+          className={`inline-block mr-[0.28em] ${word === "Records" ? "text-slate-400" : ""}`}
+        >
+          {word}
+        </motion.span>
+      ))}
+      <br className="hidden sm:block" />
+      {FOLLOW_WORDS.map((word, i) => (
+        <motion.span
+          key={`follow-${cycle}-${word}-${i}`}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+          animate={isInView ? { opacity: 1, y: [18, -8, 0] } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.55, delay: (WAVE_WORDS.length + i) * 0.09, ease: "easeOut" }}
+          className="inline-block mr-[0.28em]"
+        >
+          {word}
+        </motion.span>
+      ))}
+      <span className="relative inline-block align-baseline">
+        <span className="invisible select-none" aria-hidden>
+          {TYPED_WORD}
+        </span>
+        <span className="absolute left-0 top-0 inline-flex items-baseline">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-500">
+            {typed}
+          </span>
+          {showCursor && (
+            <motion.span
+              aria-hidden
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.75, repeat: Infinity, ease: "linear" }}
+              className="ml-0.5 inline-block w-[3px] h-[0.82em] rounded-sm bg-purple-600"
+            />
+          )}
+        </span>
+        <motion.span
+          aria-hidden
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={typed === TYPED_WORD ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="absolute left-0 -bottom-1 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-purple-500 to-indigo-400"
+        />
+      </span>
+    </h2>
+  );
+}
+
+function AnimatedConnectHeading() {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "-80px" });
+  const prefersReducedMotion = useReducedMotion();
+  const [cycle, setCycle] = useState(0);
+  const [active, setActive] = useState<"physical" | "link" | "digital" | "idle">("idle");
+
+  useEffect(() => {
+    if (!isInView || prefersReducedMotion) return;
+
+    let cancelled = false;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => {
+        timeouts.push(setTimeout(resolve, ms));
+      });
+
+    const run = async () => {
+      while (!cancelled) {
+        setCycle((current) => current + 1);
+        setActive("idle");
+        await wait(700);
+        if (cancelled) return;
+
+        setActive("physical");
+        await wait(1100);
+        if (cancelled) return;
+
+        setActive("link");
+        await wait(700);
+        if (cancelled) return;
+
+        setActive("digital");
+        await wait(1400);
+        if (cancelled) return;
+
+        setActive("idle");
+        await wait(2600);
+      }
+    };
+
+    void run();
+
+    return () => {
+      cancelled = true;
+      timeouts.forEach(clearTimeout);
+    };
+  }, [isInView, prefersReducedMotion]);
+
+  return (
+    <h2
+      ref={ref}
+      aria-label="Connecting the Physical World With the Digital World"
+      className="relative mb-6 text-3xl lg:text-4xl font-extrabold tracking-tight leading-[1.3]"
+    >
+      <span className="relative block overflow-hidden pb-2">
+        <motion.span
+          className="block text-slate-900"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          Connecting the{" "}
+          <span
+            className={`transition-colors duration-500 ${
+              active === "physical" ? "text-slate-900" : "text-slate-500"
+            }`}
+          >
+            Physical World
+          </span>
+        </motion.span>
+
+        <motion.span
+          aria-hidden
+          animate={
+            active === "link" || active === "digital"
+              ? { scaleX: 1, opacity: 1 }
+              : { scaleX: 0.35, opacity: 0.35 }
+          }
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="my-2 block h-[3px] w-16 origin-left rounded-full bg-gradient-to-r from-slate-400 via-blue-500 to-sky-400"
+        />
+
+        <motion.span
+          className="block"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
+        >
+          <span className="text-slate-900">With the </span>
+          <span
+            className={`relative inline transition-colors duration-500 ${
+              active === "digital"
+                ? "text-blue-600"
+                : "text-blue-600/70"
+            }`}
+          >
+            Digital World
+            <motion.span
+              aria-hidden
+              animate={active === "digital" ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="absolute left-0 -bottom-0.5 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-blue-500 to-sky-400"
+            />
+          </span>
+        </motion.span>
+
+        {isInView && !prefersReducedMotion && (
+          <motion.span
+            key={`scan-${cycle}`}
+            aria-hidden
+            initial={{ x: "-30%", opacity: 0 }}
+            animate={{ x: "140%", opacity: [0, 0.55, 0] }}
+            transition={{ duration: 1.35, ease: "easeInOut", delay: 0.1 }}
+            className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-transparent via-sky-300/40 to-transparent"
+          />
+        )}
+      </span>
+    </h2>
+  );
+}
+
 export default function CoreTechnologies() {
   const aiCapabilities = [
-    "AI business assistants", "Natural-language interfaces", "Automated reporting", 
+    "AI business assistants", "Natural-language interfaces", "Intelligent reporting", 
     "Predictive analytics", "Intelligent search", "Anomaly detection", 
-    "Recommendations", "Document intelligence", "Workflow assistance", "Knowledge automation"
+    "Recommendations", "Document intelligence", "Workflow assistance", "Robotics and Automation"
   ];
 
   const rfidCapabilities = [
@@ -55,8 +312,8 @@ export default function CoreTechnologies() {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 space-y-24 lg:space-y-32">
+    <section className="py-20 lg:py-20 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 space-y-24 lg:space-y-32">
         
         {/* Section 06: AI & Intelligent Enterprise */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -66,14 +323,16 @@ export default function CoreTechnologies() {
             viewport={{ once: true }}
             className="order-2 lg:order-1"
           >
-            <div className="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center mb-8 border border-purple-200">
+            <motion.div
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+            className="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center mb-8 border border-purple-200 shrink-0"
+            >
               <Bot className="text-purple-600" size={32} strokeWidth={2} />
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Moving From Software That Records to Technology That Understands
-            </h2>
+            </motion.div>
+            <AnimatedInsightHeading />
             <p className="text-lg text-slate-600 leading-[1.8] mb-8">
-              LoyalString's approach to AI is practical: use intelligence where it improves decision-making, productivity, prediction, automation and customer experience.
+              LoyalString's approach to AI is practical: use intelligence where it improves decision-making, productivity, prediction, robotics and automation, and customer experience.
             </p>
             <blockquote className="border-l-4 border-purple-500 pl-6 py-2 mb-10">
               <p className="text-xl font-bold text-slate-800 italic">
@@ -139,12 +398,14 @@ export default function CoreTechnologies() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center mb-8 border border-blue-200">
+            <motion.div
+              animate={{ rotate: [0, 8, -8, 0], scale: [1, 1.06, 1] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center mb-8 border border-blue-200"
+            >
               <Wifi className="text-blue-600" size={32} strokeWidth={2} />
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Connecting the Physical World With the Digital World
-            </h2>
+            </motion.div>
+            <AnimatedConnectHeading />
             <p className="text-lg text-slate-600 leading-[1.8]">
               RFID, IoT and connected devices enable organisations to identify, track and interact with physical assets while feeding real-world activity into digital business systems.
             </p>

@@ -27,7 +27,7 @@ export default function SoftwareDevelopmentPage() {
     },
     {
       title: "Artificial Intelligence & ML",
-      desc: "Integrating predictive analytics, NLP, and intelligent automation into your existing workflows.",
+      desc: "Integrating predictive analytics, NLP, and intelligent robotics and automation into your existing workflows.",
       icon: <Cpu size={28} className={theme.text} />
     },
     {

@@ -11,7 +11,7 @@ export default function EngineeringTrust() {
 
   const engineeringTopics = [
     "Scalable architecture", "Product reliability", "Software quality", "Security", 
-    "Documentation", "Automated testing", "CI/CD", "Release discipline", "Performance", "Maintainability"
+    "Documentation", "Quality testing", "CI/CD", "Release discipline", "Performance", "Maintainability"
   ];
 
   const securityTopics = [
@@ -26,7 +26,7 @@ export default function EngineeringTrust() {
 
   return (
     <section className="py-24 lg:py-32 bg-slate-50 border-t border-slate-200">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 space-y-24 lg:space-y-32">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 space-y-24 lg:space-y-32">
         
         {/* Section 10: Engineering, Security & Trust */}
         <div>
@@ -40,8 +40,18 @@ export default function EngineeringTrust() {
           </div>
 
           {/* Process Line */}
-          <div className="mb-20 overflow-x-auto pb-4 hide-scrollbar">
-            <div className="flex items-center justify-between min-w-[800px] max-w-5xl mx-auto">
+          <div className="mb-16 lg:mb-20">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:hidden gap-4">
+              {processSteps.map((step, index) => (
+                <div key={step} className="flex flex-col items-center gap-2 text-center">
+                  <div className="w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-slate-500 shadow-sm">
+                    <span className="font-bold text-sm">{index + 1}</span>
+                  </div>
+                  <span className="text-xs font-bold text-slate-600 leading-tight">{step}</span>
+                </div>
+              ))}
+            </div>
+            <div className="hidden lg:flex items-center justify-between max-w-5xl mx-auto">
               {processSteps.map((step, index) => (
                 <React.Fragment key={index}>
                   <div className="flex flex-col items-center gap-3 group cursor-default">
@@ -152,7 +162,7 @@ export default function EngineeringTrust() {
               className="bg-white p-6 rounded-2xl border border-blue-100 shadow-md w-full z-10 relative"
             >
               <div className="flex flex-wrap justify-center gap-2 lg:gap-4">
-                {['Software', 'AI', 'Cloud', 'RFID', 'IoT', 'Automation', 'Data'].map((tech, i) => (
+                {['Software', 'AI', 'Cloud', 'RFID', 'IoT', 'Robotics and Automation', 'Data'].map((tech, i) => (
                   <span key={i} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg font-bold text-sm">
                     {tech}
                   </span>
