@@ -63,6 +63,17 @@ export default function Header() {
     { name: "Contact", path: "/contact" }
   ];
 
+  const visibleNavLinks = isHome
+    ? navLinks.filter((link) => link.path !== "/")
+    : navLinks;
+
+  const isNavActive = (path: string) => {
+    if (path === "/vision-2030") {
+      return isHome || pathname === "/vision-2030";
+    }
+    return pathname === path;
+  };
+
   return (
     <header className={`header ${headerClass}`}>
       <div className="header-container">
@@ -80,11 +91,11 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="desktop-nav">
           <ul className="nav-list flex items-center gap-8">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <li key={link.name} className="relative group py-2">
                 <Link
                   href={link.path}
-                  className={`nav-link flex items-center gap-1 ${pathname === link.path ? "active" : ""}`}
+                  className={`nav-link flex items-center gap-1 ${link.path === "/vision-2030" ? "nav-link-vision" : ""} ${isNavActive(link.path) ? "active" : ""}`}
                 >
                   {link.name} {link.dropdown && <ChevronDown size={14} />}
                 </Link>
@@ -139,9 +150,10 @@ export default function Header() {
           className="mobile-nav"
         >
           <ul className="mobile-nav-list max-h-[70vh] overflow-y-auto pb-6 pt-4">
-            {navLinks.map((link) => {
+            {visibleNavLinks.map((link) => {
               const hasDropdown = !!link.dropdown;
               const isExpanded = expandedMenu === link.name;
+              const isActive = isNavActive(link.path);
               
               return (
               <li key={link.name} className="pb-5">
@@ -150,7 +162,7 @@ export default function Header() {
                     className="flex justify-between items-center cursor-pointer"
                     onClick={() => setExpandedMenu(isExpanded ? null : link.name)}
                   >
-                    <span className="font-semibold text-slate-800 text-[1.1rem]">
+                    <span className={`font-semibold text-[1.1rem] ${isActive ? "text-blue-600" : "text-slate-800"}`}>
                       {link.name}
                     </span>
                     <ChevronDown size={20} className={`text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
@@ -158,7 +170,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.path}
-                    className="font-semibold text-slate-800 text-[1.1rem] block"
+                    className={`font-semibold text-[1.1rem] block ${link.path === "/vision-2030" ? "nav-link-vision-mobile" : ""} ${isActive ? (link.path === "/vision-2030" ? "active" : "text-blue-600") : "text-slate-800"}`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
