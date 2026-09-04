@@ -5,14 +5,37 @@ import { motion } from "framer-motion";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import NavMegaMenu, { type MegaMenuItem } from "./NavMegaMenu";
 import "./Header.css";
+
+type NavLink = {
+  name: string;
+  path: string;
+  align?: "start" | "center" | "end";
+  dropdown?: MegaMenuItem[];
+};
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
+  const closeMenuTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDesktopMenu = (name: string) => {
+    if (closeMenuTimer.current) {
+      clearTimeout(closeMenuTimer.current);
+      closeMenuTimer.current = null;
+    }
+    setOpenMenu(name);
+  };
+
+  const scheduleCloseDesktopMenu = () => {
+    if (closeMenuTimer.current) clearTimeout(closeMenuTimer.current);
+    closeMenuTimer.current = setTimeout(() => setOpenMenu(null), 200);
+  };
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -42,43 +65,107 @@ export default function Header() {
     };
   }, [isOpen, pathname]);
 
+  useEffect(() => {
+    return () => {
+      if (closeMenuTimer.current) clearTimeout(closeMenuTimer.current);
+    };
+  }, []);
+
   const isTransparent = isHome && !isScrolled;
   const headerClass = isTransparent ? "header-transparent" : "header-scrolled";
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", path: "/" },
-    { 
-      name: "Industries", 
+    {
+      name: "Industries",
       path: "/industries",
+      align: "start",
       dropdown: [
-        { name: "Retailer", path: "/industries/retailer" },
-        { name: "Library", path: "/industries/library" },
-        { name: "Medical", path: "/industries/medical" },
-        { name: "Warehousing", path: "/industries/warehousing" },
-      ]
+        {
+          name: "Retailer",
+          path: "/industries/retailer",
+          description: "RFID for stores, textile tracking, and EAS loss prevention from floor to checkout.",
+          image: "/images/retail_rfid.png",
+        },
+        {
+          name: "Library",
+          path: "/industries/library",
+          description: "Self-checkout, smart returns, and collection security with RFID inventory tools.",
+          image: "/images/library_rfid.png",
+        },
+        {
+          name: "Medical",
+          path: "/industries/medical",
+          description: "Track equipment, supplies, and compliance across hospital floors in real time.",
+          image: "/images/medical_rfid.png",
+        },
+        {
+          name: "Warehousing",
+          path: "/industries/warehousing",
+          description: "Dock-door reads, pallet location, and forklift tracking for faster logistics.",
+          image: "/images/warehouse_rfid.png",
+        },
+      ],
     },
-    { 
-      name: "Services", 
+    {
+      name: "Services",
       path: "/services",
+      align: "center",
       dropdown: [
-        { name: "Software Development", path: "/services/software-development" },
-        { name: "Digital Marketing", path: "/services/digital-marketing" },
-        { name: "SEO", path: "/services/seo" },
-        { name: "Business Consulting", path: "/services/business-consulting" },
-      ]
+        {
+          name: "Software Development",
+          path: "/services/software-development",
+          description: "Enterprise apps, RFID middleware, and mobile tools built around your operations.",
+          image: "/images/services/software-development.jpg",
+        },
+        {
+          name: "Digital Marketing",
+          path: "/services/digital-marketing",
+          description: "Demand generation for RFID, hardware, and software brands that need qualified buyers.",
+          image: "/images/services/digital-marketing.jpg",
+        },
+        {
+          name: "SEO",
+          path: "/services/seo",
+          description: "Rank for product catalogs and high-intent searches from procurement and operations teams.",
+          image: "/images/services/seo.jpg",
+        },
+        {
+          name: "Business Consulting",
+          path: "/services/business-consulting",
+          description: "Roadmaps that connect process, software, RFID, and robotics and automation.",
+          image: "/images/services/business-consulting.jpg",
+        },
+      ],
     },
-    { 
-      name: "Products", 
+    {
+      name: "Products",
       path: "/products",
+      align: "end",
       dropdown: [
-        { name: "EAS", path: "/products/eas" },
-        { name: "RFID", path: "/products/rfid" },
-        { name: "Hardware", path: "/products/hardware" },
-      ]
+        {
+          name: "EAS",
+          path: "/products/eas",
+          description: "Security gates, hard tags, and checkout deactivators for high-traffic retail floors.",
+          image: "/images/products/eas.jpg",
+        },
+        {
+          name: "RFID",
+          path: "/products/rfid",
+          description: "Handheld guns, portals, tags, and software that turn reads into live inventory data.",
+          image: "/images/products/rfid.jpg",
+        },
+        {
+          name: "Hardware",
+          path: "/products/hardware",
+          description: "POS terminals, scanners, printers, and networking for store and warehouse operations.",
+          image: "/images/products/hardware.jpg",
+        },
+      ],
     },
     { name: "About Us", path: "/about" },
     { name: "Vision 2030", path: "/vision-2030" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
   ];
 
   const visibleNavLinks = isHome
@@ -111,26 +198,30 @@ export default function Header() {
         <nav className="desktop-nav">
           <ul className="nav-list flex items-center gap-8">
             {visibleNavLinks.map((link) => (
-              <li key={link.name} className="relative group py-2">
+              <li
+                key={link.name}
+                className={`py-2 ${link.dropdown ? "nav-item-has-menu" : ""} ${openMenu === link.name ? "is-open" : ""}`}
+                onMouseEnter={() => {
+                  if (link.dropdown) openDesktopMenu(link.name);
+                }}
+                onMouseLeave={() => {
+                  if (link.dropdown) scheduleCloseDesktopMenu();
+                }}
+              >
                 <Link
                   href={link.path}
                   className={`nav-link flex items-center gap-1 ${link.path === "/vision-2030" ? "nav-link-vision" : ""} ${isNavActive(link.path) ? "active" : ""}`}
+                  aria-haspopup={link.dropdown ? "true" : undefined}
+                  aria-expanded={link.dropdown ? openMenu === link.name : undefined}
                 >
                   {link.name} {link.dropdown && <ChevronDown size={14} />}
                 </Link>
-                
                 {link.dropdown && (
-                  <div className="absolute top-full left-0 hidden group-hover:block w-56 bg-white shadow-xl border border-slate-100 rounded-xl overflow-hidden py-2 z-50">
-                    {link.dropdown.map(drop => (
-                      <Link 
-                        key={drop.name} 
-                        href={drop.path}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
-                      >
-                        {drop.name}
-                      </Link>
-                    ))}
-                  </div>
+                  <NavMegaMenu
+                    items={link.dropdown}
+                    open={openMenu === link.name}
+                    onMouseEnter={() => openDesktopMenu(link.name)}
+                  />
                 )}
               </li>
             ))}
@@ -197,15 +288,19 @@ export default function Header() {
                 )}
                 
                 {hasDropdown && isExpanded && (
-                  <div className="pl-4 mt-4 flex flex-col gap-4">
-                    {link.dropdown?.map(drop => (
-                      <Link 
-                        key={drop.name} 
+                  <div className="pl-1 mt-4 flex flex-col gap-3">
+                    {link.dropdown?.map((drop) => (
+                      <Link
+                        key={drop.name}
                         href={drop.path}
-                        className="text-[0.95rem] text-slate-600 hover:text-blue-600 block"
+                        className="mobile-sub-link text-[0.95rem] text-slate-600 hover:text-blue-600"
                         onClick={() => setIsOpen(false)}
                       >
-                        {drop.name}
+                        <img src={drop.image} alt="" className="mobile-sub-thumb" />
+                        <span>
+                          <span className="block font-semibold text-slate-800">{drop.name}</span>
+                          <span className="block text-xs text-slate-500 leading-snug mt-0.5">{drop.description}</span>
+                        </span>
                       </Link>
                     ))}
                   </div>
