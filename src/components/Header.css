@@ -1,22 +1,27 @@
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   padding: 0.5rem 1rem;
   border-radius: 0;
   border-top: none;
   border-left: none;
   border-right: none;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
   max-width: 100%;
-  overflow-x: hidden;
+  line-height: 1;
+  margin: 0;
+}
+
+.header-spacer {
+  height: calc(40px + 1rem);
+  margin: 0;
+  padding: 0;
 }
 
 .header-transparent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -24,7 +29,6 @@
 }
 
 .header-scrolled {
-  position: sticky;
   background: white !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
@@ -174,7 +178,9 @@
 @media (min-width: 1024px) {
   .header {
     padding: 0.5rem 2rem;
-    overflow-x: visible;
+  }
+  .header-spacer {
+    height: calc(60px + 1rem);
   }
   .desktop-nav {
     display: block;

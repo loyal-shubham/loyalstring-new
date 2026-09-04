@@ -16,10 +16,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 px-6">
+    <div className="flex min-h-[calc(100dvh-5.5rem)] items-center justify-center bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
       <div className="text-center max-w-2xl mx-auto">
-        <div className="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-8">
-          <AlertOctagon size={48} className="text-red-600" />
+        <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <AlertOctagon size={32} className="text-red-600" />
         </div>
         <h1 className="text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Something went wrong!</h1>
         <p className="text-slate-600 text-lg mb-10 leading-relaxed">

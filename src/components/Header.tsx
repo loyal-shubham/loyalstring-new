@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import "./Header.css";
 
@@ -11,6 +11,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -23,6 +25,22 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const updateHeight = () => setHeaderHeight(el.offsetHeight);
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [isOpen, pathname]);
 
   const isTransparent = isHome && !isScrolled;
   const headerClass = isTransparent ? "header-transparent" : "header-scrolled";
@@ -75,13 +93,14 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${headerClass}`}>
+    <>
+    <header ref={headerRef} className={`header ${headerClass}`}>
       <div className="header-container">
         <Link href="/" className="logo flex items-center no-underline min-w-0 shrink">
           <img
             src={isTransparent ? "/logos/logo_white.png" : "/logos/logo_black.png"}
             alt="Loyal String Logo"
-            className="h-10 lg:h-[60px] w-auto"
+            className="h-10 lg:h-[60px] w-auto block"
           />
           <span className="ml-2 lg:ml-3 font-extrabold text-[1rem] sm:text-[1.15rem] lg:text-[1.3rem] tracking-tight" style={{ color: isTransparent ? "rgba(255, 255, 255, 0.95)" : "var(--text-primary)" }}>
             Loyal String
@@ -218,5 +237,13 @@ export default function Header() {
         </motion.nav>
       )}
     </header>
+    {!isHome && (
+      <div
+        className="header-spacer"
+        aria-hidden="true"
+        style={headerHeight ? { height: headerHeight } : undefined}
+      />
+    )}
+    </>
   );
 }
