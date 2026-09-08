@@ -20,8 +20,8 @@ export default function InteractiveSolutions({ solutions }: { solutions: Solutio
             key={i}
             onClick={() => setActiveIndex(i)}
             className={`text-left py-4 px-6 flex items-center justify-between transition-all duration-300 border-l-4 ${activeIndex === i
-                ? 'border-blue-600 bg-blue-50/50 text-blue-700 font-bold'
-                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              ? 'border-blue-600 bg-blue-50/50 text-blue-700 font-bold'
+              : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
           >
             <span className="text-[1.05rem]">{sol.name}</span>

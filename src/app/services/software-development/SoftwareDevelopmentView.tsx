@@ -130,9 +130,9 @@ export default function SoftwareDevelopmentView() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
           >
             <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8">
-              <span className="inline-flex items-center gap-2 mb-3 text-xs font-bold tracking-[0.16em] uppercase text-blue-700">
+              {/* <span className="inline-flex items-center gap-2 mb-3 text-xs font-bold tracking-[0.16em] uppercase text-blue-700">
                 <Code size={14} /> Service Overview
-              </span>
+              </span> */}
               <h2 className="text-3xl lg:text-[2.25rem] font-extrabold tracking-tight text-slate-900 mb-3 leading-tight">
                 Software that connects your operations to LoyalString hardware
               </h2>

@@ -3,8 +3,29 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-12 pb-8 border-t border-slate-900 mt-12">
-      <div className="max-w-[1500px] mx-auto px-6 lg:px-12">
+    <footer className="relative overflow-hidden bg-slate-950 text-slate-300 pt-12 pb-8 mt-12">
+      <div className="absolute inset-0 z-0" aria-hidden>
+        <img
+          src="/images/warehouse_rfid.png"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.12] grayscale"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/92 to-slate-950/80" />
+        <svg className="absolute inset-0 h-full w-full text-white opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="footer-grid" width="44" height="44" patternUnits="userSpaceOnUse">
+              <path d="M 44 0 L 0 0 0 44" fill="none" stroke="currentColor" strokeWidth="0.7" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#footer-grid)" />
+        </svg>
+        <div className="absolute -top-24 left-1/4 h-56 w-56 rounded-full bg-blue-600/20 blur-[90px]" />
+        <div className="absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-indigo-500/15 blur-[100px]" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
+        <div className="absolute top-[3px] left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+      </div>
+
+      <div className="relative z-10 max-w-[1500px] mx-auto px-6 lg:px-12">
         <div className="flex flex-wrap lg:flex-nowrap gap-8 justify-between mb-8">
           
           {/* Brand & Description */}
@@ -99,7 +120,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-6 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-6 mt-2 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-xs">
             &copy; {new Date().getFullYear()} Loyal String International Pvt. Ltd. All rights reserved.
           </p>
